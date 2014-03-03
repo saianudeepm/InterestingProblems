@@ -1,4 +1,4 @@
-package com.salome.glass;
+package com.salome.problems;
 
 /**
  * Created by saimachavarapu on 2/23/14.

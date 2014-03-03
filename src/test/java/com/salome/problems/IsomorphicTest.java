@@ -1,4 +1,4 @@
-package com.salome.glass;
+package com.salome.problems;
 
 import junit.framework.Assert;
 import org.junit.Test;
