@@ -73,6 +73,32 @@ public class PointsOnAPlaneImpl {
 
     public class Point implements Comparable<Point>{
         int x;
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            Point point = (Point) o;
+
+            if (Double.compare(point.distFromCenter, distFromCenter) != 0) return false;
+            if (x != point.x) return false;
+            if (y != point.y) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            int result;
+            long temp;
+            result = x;
+            result = 31 * result + y;
+            temp = Double.doubleToLongBits(distFromCenter);
+            result = 31 * result + (int) (temp ^ (temp >>> 32));
+            return result;
+        }
+
         int y;
         double distFromCenter;
 

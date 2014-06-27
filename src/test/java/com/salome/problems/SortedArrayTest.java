@@ -49,8 +49,8 @@ public void testFindRange() throws Exception {
     numList.add(10);
     numList.add(10);
     SortedArray sortedArray = new SortedArray();
-    int[] result = sortedArray.findRange(numList,3);
-    System.out.print(result[0] +"," +result[1]);
+    //int[] result = sortedArray.findRange(numList,3);
+    //System.out.print(result[0] +"," +result[1]);
 } 
 
 

@@ -10,12 +10,14 @@ package com.salome.problems;
 public class MinAbsDiff {
 
     public static void main(String args[]){
-        int [] arr1 = {0,1,2,3,4};
-        int [] arr2 = {5,6,7,8,9};
-        System.out.println(minAbsDiff(arr1, arr2));
+        int [] arr1 = {0,2,5,6};
+        int [] arr2 = {1,2,4,8};
+        System.out.println(minAbsDiff2(arr1, arr2));
 
     }
 
+    //inefficient
+    @Deprecated
     public static int minAbsDiff(int [] arr1, int[] arr2){
         //this will be a O(n^2) if we do it using bruteforce
         // we need to iterate over one array and do a binary search in second
@@ -69,5 +71,26 @@ public class MinAbsDiff {
     }
     public static int diff(int i, int j){
         return Math.abs(i-j);
+    }
+
+    //use merge step in mergesort and while merging take diffence
+    //should be O(n)
+    public static int minAbsDiff2(int [] arr1, int[] arr2){
+        int diff = Math.abs(arr1[0] - arr2[0]) ;
+        int le= arr1[0];
+        int re=arr2[0];
+        int lptr=0,rptr=0;
+
+        while(lptr<arr1.length && rptr<arr2.length){
+            if(arr1[lptr]<arr2[rptr])
+                lptr++;
+            else {
+                rptr++;
+            }
+            if(lptr<arr1.length && rptr<arr2.length)
+                diff = Math.min(Math.abs(arr1[lptr] - arr2[rptr]),diff);
+        }
+
+        return diff;
     }
 }

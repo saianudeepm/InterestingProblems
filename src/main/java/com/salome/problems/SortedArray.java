@@ -11,6 +11,7 @@ package com.salome.problems;
 
         Complexity should be less than O(n)*/
 
+//O(logn) complexity
 
 public class SortedArray {
     //binary search. If found then search to left of this repeat recursively to find start
@@ -18,17 +19,17 @@ public class SortedArray {
     //O(log n)
 
     public static void main(String args[]){
-        int test[] ={0,0,2,3,3,3,3,4,7,7,9};
-        int result []= findSortedArrayRange(test,7);
-        System.out.println(result[0] +","+result[1]);
+        int test[] = {0,0,2,3,3,3,3,4,7,7,9};
+        int result1 []= findSortedArrayRange(test,3);
+        System.out.println("Result: "+ result1[0] +","+result1[1]);
     }
     public static int[] findSortedArrayRange(int arr[], int target){
         //binary search to find the index;
         int low=0;
-        int high=arr.length;
+        int high=arr.length-1;
         int foundIndex;
         int startIndex;
-        int mid;
+
         //binary search for 1st occurrence
         foundIndex= bsearch(arr, low,high, target);
         if(foundIndex==-1){
@@ -56,10 +57,13 @@ public class SortedArray {
         int retVal []={startIndex,endIndex};
         return retVal;
     }
+
+    // binary search given the input array arr[], start index, end index and target
+    //O(logn)
     public static int bsearch(int arr[],int low, int high, int target){
         int index=-1;
-        int mid = low+(high-low)/2;
-        while(low<high && mid!=0 && target==arr[mid-1]){
+        int mid;
+        while(low<=high){
             mid = low+(high-low)/2;
             if(arr[mid]==target){
                 index=mid;
@@ -72,6 +76,9 @@ public class SortedArray {
                 low=mid+1;
             }
         }
+
         return index;
     }
+
+
 }

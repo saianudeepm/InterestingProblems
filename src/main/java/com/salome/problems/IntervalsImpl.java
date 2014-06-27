@@ -37,16 +37,16 @@ public class IntervalsImpl implements Intervals {
                 result = result <temp ? temp:result ;
             }
             second = rangeQueue.poll();
-            IntervalRange temp= getIntersectRange(first, second);
-            if(temp!=null){
+            IntervalRange intersectRange= getIntersectRange(first, second);
+            if(intersectRange!=null){
 
-                first= temp;
+                first= intersectRange;
                 isIntersect = true;
             }
             else{
                 first = second;
             }
-        }
+        }//for
         if(isIntersect){
             int finRange = Math.abs(first.getStart() - first.getEnd()) + 1;
                 return finRange;
@@ -101,7 +101,7 @@ public class IntervalsImpl implements Intervals {
                 return 0;
             else if(this.getStart() > o.getStart())
                 return 1;
-            else
+            else 
                 return -1;
 
 

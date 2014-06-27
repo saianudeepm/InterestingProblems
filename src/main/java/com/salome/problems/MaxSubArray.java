@@ -9,6 +9,7 @@ Maximum value Continuous Subsequence:
 
         Ex: {-2, 11, -4, 13, -5, -2} --> 11 - 4 +13 = 20
         {1, -3, 4, -2, -1, 6} --> 4 -2 -1 +6 = 7
+        {2,-2, 3,-4,5,7}
         Time complexity should O(nlogn)
 */
 
@@ -16,7 +17,7 @@ Maximum value Continuous Subsequence:
 public class MaxSubArray {
 
     public static void main(String args[]){
-        int a[] ={2,-1,0,2,-1};
+        int a[] = {1, -3, 4, -2, -1};
         System.out.print(maxSum(a));
     }
 
@@ -40,7 +41,7 @@ public class MaxSubArray {
             return maxSum;
         }
         //---------------
-        //positive case
+        //atleast one positive case
         //---------------
         maxSum=0;
         int currSum =0;

@@ -1,5 +1,7 @@
 package com.salome.problems;
 
+import java.util.concurrent.BlockingQueue;
+
 /**
  * Created by saimachavarapu on 3/2/14.
  */
@@ -10,7 +12,6 @@ public class Power {
      */
     public static double pow(double a, int b) {
         double result;
-
         if(b==0)
             return 1;
 

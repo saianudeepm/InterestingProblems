@@ -29,7 +29,7 @@ public class BinaryTreeTraversal {
         int[] test = new int[] { 1, 2, 3, 4, 5, 6, 7 };
         Node<Integer> node = sortedArrayToBST(test, 0, test.length - 1);
 
-        System.out.println("preOrderTraversal >> ");
+       /* System.out.println("preOrderTraversal >> ");
 
         preOrderTraversal(node);
 
@@ -71,11 +71,13 @@ public class BinaryTreeTraversal {
 
         System.out.println("postOrderTraversal >> ");
 
-        postOrderTraversal(node);
+        postOrderTraversal(node);*/
 
         System.out.println("bfs is >>");
         bfs(node);
 
+        System.out.println("dfs is >>");
+        dfs(node);
 
     }
 
@@ -130,6 +132,30 @@ public class BinaryTreeTraversal {
         }
 
     }
+    /*
+    * To construct the bst back after a bfs, we can store the bfs in a array
+    * eg
+    * for tree
+				9
+			6		12
+		3 	   7   11  13
+	  n  n   5	n n n n  n
+
+    array is : 9 6 12 3 7 11 13 null null 5 null null null
+    *   logic to get back the tree is below:
+    *
+    *   currptr=0
+    *   while(currptr<a.length)
+        root= a[currptr]
+        if(root==null){
+            currptr++;
+             continue
+        }
+        l =currptr*2+1;
+        r = l+1;
+        currptr++;
+    * */
+
 
     public static void bfs(Node<Integer> node){
         Queue<Node<Integer>> queue = new LinkedList<Node<Integer>>();
@@ -155,26 +181,27 @@ public class BinaryTreeTraversal {
         }
 
     }
+    //iterative way
     public static void dfs(Node node) {
-        //not implemented
+
+        if(node==null)
+            return;
         // DFS uses Stack data structure
-        Stack stack = new Stack();
+        Stack<Node> stack = new Stack<Node>();
         stack.push(node);
-        System.out.println(node.getValue());
-       /* while(!stack.isEmpty()) {
-            Node node = (Node)s.peek();
-            Node child = getUnvisitedChildNode(n);
-            if(child != null) {
-                child.visited = true;
-                System.out.println(child.getValue());
-                s.push(child);
-            }
-            else {
-                s.pop();
-            }
+        while(!stack.isEmpty()){
+            //pop the element from stack
+            node= stack.pop();
+            //visit the current node
+            System.out.print(node.getValue());
+            //push right child
+            if(node.getRight()!=null)
+                stack.push(node.getRight());
+            //push left child
+            if(node.getLeft()!=null)
+                stack.push(node.getLeft());
         }
-        // Clear visited property of nodes
-        clearNodes();*/
+
     }
     public static void searchInTree(Node<Integer> node, int key) {
 
